@@ -22,10 +22,6 @@ operation = {
  }
 
 
-
-keep_going = True
-st_n = 0
-#first_n = int(input("What's the first number? : "))
 def calculate(st_n):
     if st_n == 0:
         first_n = int(input("What's the first number? : "))
@@ -37,6 +33,9 @@ def calculate(st_n):
     print(f"{first_n} {c_oper} {second_n}  = {st_n}")
     return st_n
 
+
+keep_going = True
+st_n = 0
 while keep_going:
     st_n = calculate(st_n)
     cont = input(f"Type 'Y' to continue calculating with {st_n}, or type 'n' to start a new calculation:    ").lower()
