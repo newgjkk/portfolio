@@ -1,0 +1,44 @@
+import art
+print(art.logo)
+
+
+def add(n1, n2):
+    return n1 + n2
+
+def subtract(n1, n2):
+    return n1 - n2
+
+def mul(n1, n2):
+    return n1 * n2
+
+def dev(n1, n2):
+    return n1 / n2
+
+operation = {
+     "+" : add,
+     "-" : subtract,
+     "*" : mul,
+     "/" : dev
+ }
+
+
+
+keep_going = True
+st_n = 0
+#first_n = int(input("What's the first number? : "))
+def calculate(st_n):
+    if st_n == 0:
+        first_n = int(input("What's the first number? : "))
+    else:
+        first_n = st_n
+    c_oper = input("+\n-\n*\n/\nPick an operation : ")
+    second_n = int(input("What's the next number? : "))
+    st_n = operation[c_oper](first_n, second_n)
+    print(f"{first_n} {c_oper} {second_n}  = {st_n}")
+    return st_n
+
+while keep_going:
+    st_n = calculate(st_n)
+    cont = input(f"Type 'Y' to continue calculating with {st_n}, or type 'n' to start a new calculation:    ").lower()
+    if cont == 'n':
+        keep_going = False
