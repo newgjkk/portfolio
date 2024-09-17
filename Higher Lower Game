@@ -24,6 +24,7 @@ def compare(a, b, guess, point):
     if guess == 'a':
         #if a > b AS user typed
         if a['follower_count'] > b['follower_count']:
+            print("HERE!")
             point += 1
             result = f"You're right! current score : {point}"
             keep = True
@@ -36,7 +37,6 @@ def compare(a, b, guess, point):
     elif guess == 'b':
         #if a < b AS user typed
         if a['follower_count'] < b['follower_count']:
-            print("HERE!")
             point += 1
             result = f"You're right! current score : {point}"
             keep = True
@@ -47,8 +47,10 @@ def compare(a, b, guess, point):
             return result,keep,point
 
 
-
-
+    else:
+        result = "INVALID INPUT"
+        keep = False
+        return result,keep,point
 
 #### START #####
 game = True
@@ -63,4 +65,3 @@ while game:
     print_info(compare_A,against_B)
     guess = input("Who has more followers? Type 'A' or 'B': ").lower()
     result_a, game,score = compare(compare_A,against_B,guess,score)
-    print(result_a)
