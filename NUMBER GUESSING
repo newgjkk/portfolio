@@ -1,0 +1,50 @@
+import random
+import art
+
+def diff(choose):
+    left = 10
+    if choose == 'hard':
+        left = 5
+    return left
+
+def process(cnt,number_to_guess):
+    go_not = True
+    while go_not:
+        if cnt ==0:
+            print("YOU'VE RUN OUT OF GUESSES, YOU LOSE.")
+            break
+
+        guess = int(input("MAKE A GUESS :: "))
+        if guess < number_to_guess:
+            print("TOO LOW.\nGUESS AGAIN")
+            cnt -= 1
+            print(f"You have {cnt} remaining to guess the number.")
+        elif guess > number_to_guess:
+            print("TOO HIGH.\nGUESS AGAIN")
+            cnt -= 1
+            print(f"You have {cnt} remaining to guess the number.")
+        elif guess == number_to_guess:
+            print("!!CORRECT!!")
+            print(f"ANSWER WAS {guess}\n YOU GOT IN {cnt} ATTEMPT")
+            break
+
+
+
+#INTRO
+c_number = random.randint(1,100)
+print(c_number)
+print(art.logo)
+difficulty = input(
+    """Welcome to the Number Guessing Game!\n
+I'm thinking of a number between 1 and 100.\n
+choose a difficulty. Type 'easy' or 'hard':   
+""").lower()
+
+#START
+
+life = diff(difficulty)
+print(f"You have {life} remaining to guess the number.")
+process(life,c_number)
+
+
+
