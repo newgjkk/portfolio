@@ -1,0 +1,66 @@
+import random
+import art
+import game_data
+
+def print_info(dict1,dict2):
+
+    return print(
+f"""Compare A : {dict1['name']}, {dict1['description']}, from {dict1['country']}
+{art.vs}
+Against B : {dict2['name']}, {dict2['description']}, from {dict2['country']}"""
+)
+
+def generate():
+    c_b = game_data.data[random.randint(0, 49)]
+    c_a = game_data.data[random.randint(0, 49)]
+    while c_b == c_a:
+        c_b = game_data.data[random.randint(0, 49)]
+    return c_b, c_a
+
+def compare(a, b, guess, point):
+    #dictionary a,b
+
+
+    if guess == 'a':
+        #if a > b AS user typed
+        if a['follower_count'] > b['follower_count']:
+            point += 1
+            result = f"You're right! current score : {point}"
+            keep = True
+            return result, keep,point
+        elif a['follower_count'] < b['follower_count']:
+            result = f"Sorry. That's wrong. Final score {point}"
+            keep = False
+            return result,keep,point
+
+    elif guess == 'b':
+        #if a < b AS user typed
+        if a['follower_count'] < b['follower_count']:
+            print("HERE!")
+            point += 1
+            result = f"You're right! current score : {point}"
+            keep = True
+            return result, keep,point
+        elif a['follower_count'] > b['follower_count']:
+            result = f"Sorry. That's wrong. Final score {point}"
+            keep = False
+            return result,keep,point
+
+
+
+
+
+#### START #####
+game = True
+score = 0
+while game:
+    print(art.logo)
+    try:
+        print(result_a)
+    except NameError:
+        pass
+    compare_A, against_B = generate()
+    print_info(compare_A,against_B)
+    guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+    result_a, game,score = compare(compare_A,against_B,guess,score)
+    print(result_a)
