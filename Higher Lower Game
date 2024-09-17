@@ -45,12 +45,11 @@ def compare(a, b, guess, point):
             result = f"Sorry. That's wrong. Final score {point}"
             keep = False
             return result,keep,point
-
-
     else:
         result = "INVALID INPUT"
         keep = False
-        return result,keep,point
+        return result, keep, point
+
 
 #### START #####
 game = True
@@ -65,3 +64,4 @@ while game:
     print_info(compare_A,against_B)
     guess = input("Who has more followers? Type 'A' or 'B': ").lower()
     result_a, game,score = compare(compare_A,against_B,guess,score)
+    print(result_)
