@@ -1,0 +1,47 @@
+# import colorgram
+#
+# rgb_colors = []
+# colors = colorgram.extract('damien-hirst-severed-spots.jpg',30)
+#
+# for color in colors:
+#     r = color.rgb.r
+#     g = color.rgb.g
+#     b = color.rgb.b
+#     new_colors = (r, g, b)
+#     rgb_colors.append(new_colors)
+
+# print(rgb_colors)
+
+import turtle as t
+import random
+from random import randint
+
+#color created from jpg
+color_list = [ (249, 228, 17), (213, 13, 9), (198, 12, 35), (231, 228, 5), (197, 69, 20), (33, 90, 188), (43, 212, 71), (234, 148, 40), (33, 30, 152), (16, 22, 55), (66, 9, 49), (240, 245, 251), (244, 39, 149), (65, 202, 229), (14, 205, 222), (63, 21, 10), (224, 19, 111), (229, 165, 8), (15, 154, 22), (245, 58, 16), (98, 75, 9), (248, 11, 9), (222, 140, 203), (68, 240, 161), (10, 97, 62), (5, 38, 33), (68, 219, 155)]
+
+#Change color mode to 255
+t.colormode(255)
+
+t.hideturtle()
+t.speed("fastest")
+t.width(10)
+x_pos = -200
+y_pos = -200
+print(color_list[0])
+while y_pos <= 250:
+    while x_pos <= 250:
+        t.teleport(x_pos,y_pos)
+        rand_color = color_list[random.randint(0, len(color_list)-1)]
+        t.color((rand_color[0],rand_color[1],rand_color[2]))
+
+        x_pos += 50
+        t.dot()
+    y_pos += 50
+    x_pos = -200
+
+    t.teleport(x_pos, y_pos)
+
+
+t.getscreen()
+t.exitonclick()
+
